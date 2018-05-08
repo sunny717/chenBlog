@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户管理</title>
+
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//cdn.bootcss.com/dropzone/4.3.0/min/dropzone.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="//cdn.bootcss.com/summernote/0.8.2/summernote.css" rel="stylesheet"/>
+    <link th:href="@{/ui/lib/mditor/mditor.min.css}" rel="stylesheet"/>
+    <link th:href="@{/ui/lib/tagsinput/jquery.tagsinput.css}" rel="stylesheet"/>
+    <style>
+
+        #tags_addTag input {
+            width: 100%;
+        }
+        #tags_addTag {
+            margin-top: -5px;
+        }
+
+    </style>
+</head>
+<body>
+<article class="cl pd-20">
+	<form action="" method="post" class="form form-horizontal" id="form-user-add">
+		<div class="row cl">
+		    <input type="hidden" id="userId" name="userId" th:value="${user.id}"/>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				 <input type="text" class="input-text" th:value="${user.username}" id="username" name="username"/>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" th:value="${user.phone}" id="phone" name="phone"/>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>Email：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" th:value="${user.email}"  name="email" id="email"/>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"/>
+			</div>
+		</div>
+	</form>
+</article>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" th:src="@{/ui/lib/jquery/1.9.1/jquery.min.js}"></script> 
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" th:src="@{/ui/lib/jquery.validation/1.14.0/jquery.validate.js}"></script> 
+<script type="text/javascript" th:src="@{/ui/lib/jquery.validation/1.14.0/validate-methods.js}"></script> 
+<script type="text/javascript" th:src="@{/ui/lib/jquery.validation/1.14.0/messages_zh.js}"></script> 
+<script type="text/javascript">
+$(function(){	
+	$("#form-user-add").validate({
+		rules:{
+			username:{
+				required:true,
+				minlength:2,
+				maxlength:16
+			},
+			phone:{
+				required:true,
+				isMobile:true,
+			},
+			email:{
+				required:true,
+				email:true,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			  var userId = $("#userId").val();
+			  var username = $("#username").val();
+			  var phone = $("#phone").val();
+			  var email = $("#email").val();
+			  $.post("/user/update",
+					  {
+				        userId:userId,
+					    username:username,
+					    phone:phone,
+					    email:email
+					  },
+					  function(data,status){
+					  });
+			  console.log("window:",window);
+			var index = parent.layer.getFrameIndex(window.name);
+			console.log("index:",parent.layer);
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+
+
+</body>
+</html>
