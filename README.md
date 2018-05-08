@@ -32,13 +32,13 @@
 
 3.快速开始
 
-码云地址：https://git.oschina.net/aper/base/
+github地址：https://github.com/sunny717/myBlog
 
 开发工具：Eclipse。
 
 运行环境：jdk1.8  maven3.0+
 
-从码云导入项目至idea，修改resources文件下application.yml中mysql的配置信息，然后直接运行DemoApplication.java的main()方法。
+从github导入项目至eclipse，修改resources文件下application.yml中mysql的配置信息，然后直接运行DemoApplication.java的main()方法。
 如图所示：
 ![输入图片说明](http://on74nfn25.bkt.clouddn.com/peizhi.png "在这里输入图片标题")
 ![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_run.png "在这里输入图片标题")
@@ -56,17 +56,3 @@ src/main/resouces 文件夹中存放了框架配置文件和页面文件。
 - 其中static文件下存放了系统所需的静态资源文件。
 - 其中templates文件夹下存放本系统所有的页面信息。
 
-#来几张开发后的美图
-主页：
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_index.png "在这里输入图片标题")
-详情页
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_detail.png "在这里输入图片标题")
-
-后台主页：
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_admin_index.png "在这里输入图片标题")
-友链
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_youlian.png "在这里输入图片标题")
-附件：
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b_attach.png?a=1 "在这里输入图片标题")
-标签：
-![输入图片说明](http://on74nfn25.bkt.clouddn.com/b-tags.png "在这里输入图片标题")
